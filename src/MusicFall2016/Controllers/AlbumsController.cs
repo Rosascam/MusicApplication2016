@@ -10,16 +10,16 @@ namespace MusicFall2016.Controllers
 {
     public class AlbumsController : Controller
     {
-        private readonly MusicDbContext _context;
+        private readonly MusicDbContext db;
 
         public AlbumsController(MusicDbContext context)
         {
-            _context = context;
+            db = context;
         }
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var albums =  _context.Albums.ToList();
+            var albums =  db.Albums.ToList();
             return View(albums);
         }
     }
