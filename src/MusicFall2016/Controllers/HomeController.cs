@@ -13,21 +13,20 @@ namespace MusicFall2016.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult Album()
         {
             ViewData["Message"] = "Your application description page.";
 
             return View();
         }
+        public IActionResult Artist()
 
-        public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
 
             return View();
-        }
-
-        public IActionResult Error()
+       }
+        public IActionResult Genre()
         {
             return View();
         }
