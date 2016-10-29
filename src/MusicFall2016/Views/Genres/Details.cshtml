@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MusicFall2016.Models.Genre>
+@{
+    ViewData["Title"] = "Genre";
+}
+<h2>Details</h2>
+<form action="Create" method="get">
+    <button>Create Genre</button>
+</form>
+<form action="\Home\Index" method="get">
+    <button>Go back to Home Page</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    @foreach (var genre in Model)
+    {
+        <tr>
+            <td><a asp-action="Genre" asp-route-id="@genre.GenreID">@genre.Name</a></td>
+
+            <td>
+                <a asp-action="Update" asp-route-id="@genre.GenreID">Edit</a>
+                <a asp-action="Retrieve" asp-route-id="@genre.GenreID">Details</a>
+                
+            </td>
+        </tr>
+
+
+    }
+</table>
