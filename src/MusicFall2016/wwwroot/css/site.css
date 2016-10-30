@@ -1,24 +1,22 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color:#C63D0F;
+    background-color:#4f4f4f;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
 
 header.jumbotron { 
-background-color: white;
+background-color: #000061;
 font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
 }
 
 
 .jumbotron h1 {
-    color: royalblue;
+    color: white;
     text-align:center;
 }
 
@@ -27,6 +25,10 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+.navbar {
+    
+    background-color: #000000;
 }
 
 /* Carousel */
@@ -47,4 +49,6 @@ textarea {
   .carousel-caption {
     display: none
   }
+
+  
 }
