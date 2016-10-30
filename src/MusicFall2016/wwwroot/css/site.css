@@ -12,13 +12,14 @@
 }
 
 header.jumbotron { 
-background-color: black;
+background-color: white;
 font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
 }
 
 
 .jumbotron h1 {
-    color: white;
+    color: royalblue;
+    text-align:center;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
