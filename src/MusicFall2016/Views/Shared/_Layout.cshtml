@@ -37,12 +37,17 @@
             </div>
         </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
+        <br />
+
         <hr />
+
         <footer>
             <p>&copy; 2016 - MusicFall2016</p>
         </footer>
+
     </div>
 
     <environment names="Development">
@@ -50,6 +55,8 @@
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
+
+
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"

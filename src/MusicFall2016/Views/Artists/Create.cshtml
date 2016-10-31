@@ -7,12 +7,15 @@
 <form asp-action="Create" method="post">
     <div>
         <div>Name <p><input type="text" asp-for="Name" value="" /></p></div>
+
         <span asp-validation-for="Name"></span>
+
         <div>Bio <p><input type="text" asp-for="Bio" value="" /></p></div>
+
         <span asp-validation-for="Bio"></span>
     </div>
-    <button>Add artist</button>
 
+    <button type="button" class="btn btn-primary btn-block">Add artist</button>
 
 </form>
 
