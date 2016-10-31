@@ -2,20 +2,32 @@
 @{
     ViewData["Title"] = "Genre";
 }
-<h2>Genres</h2>
+<h1>Genres</h1>
+
 <form action="Create" method="get">
+
     <button>Create Genre</button>
-</form>
-<form action="\Home\Index" method="get">
-    <button>Go back to Home Page</button>
+
 </form>
 
+<br />
+
+<form action="\Home\Index" method="get">
+
+    <button>Go back to Home Page</button>
+
+</form>
+
+<br />
+
 <table class="table">
+
     <thead>
         <tr>
             <th>Name</th>
         </tr>
     </thead>
+
     @foreach (var genre in Model)
     {
         <tr>
@@ -26,8 +38,7 @@
                 <a asp-action="Retrieve" asp-route-id="@genre.GenreID">Details</a>
                 
             </td>
-        </tr>
-
-
+        </tr>    
     }
+
 </table>

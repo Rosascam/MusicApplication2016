@@ -3,16 +3,24 @@
     ViewData["Title"] = "Delete an Album:";
 }
 
-<h2>Delete an Album</h2>
+<h1>Delete Album</h1>
+
 <form asp-action="Delete" method="post">
 
     <input type="hidden" asp-for="AlbumID" value="@Model.AlbumID" />
+
     <div>Title: @Model.Title</div>
     <div>Artist: @Model.Artist.Name</div>
 
+    <br />
+
     <button>Delete album</button>
-    </form>
+</form>
+
+<br />
 
 <form action="/Albums/Details" method="get">
+
     <button>Go back</button>
+
 </form>

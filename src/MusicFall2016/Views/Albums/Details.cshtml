@@ -3,15 +3,25 @@
     ViewData["Title"] = "Albums";
 }
 <h1>Albums</h1>
+
 <form action="Create" method="get">
+
     <button>Create Album</button>
+
 </form>
+
+<br />
 
 <form action="\Home\Index" method="get">
+
     <button>Go back to Home Page</button>
+
 </form>
 
+<br />
+
 <table class="table">
+
     <thead>
         <tr>
             <th>Title</th>
@@ -20,6 +30,7 @@
             <th>Price</th>
         </tr>
     </thead>
+
     @foreach (var album in Model)
     {
         <tr>
@@ -34,9 +45,9 @@
                 <a asp-action="Delete" asp-route-id="@album.AlbumID">Delete</a>
             </td>
         </tr>
-
-
+        
     }
+
 </table>
 
 

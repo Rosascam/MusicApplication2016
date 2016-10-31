@@ -2,14 +2,23 @@
 @{
     ViewData["Title"] = "Album Information:";
 }
-<h2>Read album</h2>
+
+<h1>Album Details</h1>
+
 <form action="/" method="post">
+
     Title: @Model.Title<br />
     Artist: @Model.Artist.Name<br />
     Bio: @Model.Artist.Bio<br />
     Genre: @Model.Genre.Name<br />
     Price: @Model.Price<br />
+
 </form>
+
+<br />
+
 <form action="/Albums/Details" method="get">
+
     <button>Go back</button>
+
 </form>

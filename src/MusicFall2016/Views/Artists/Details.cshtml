@@ -2,22 +2,33 @@
 @{
     ViewData["Title"] = "Artists";
 }
-<h2>Artists</h2>
+<h1>Artists</h1>
+
 <form action="Create" method="get">
+
     <button>Create Artist</button>
+
 </form>
+
+<br />
 
 <form action="\Home\Index" method="get">
+
     <button>Go back to Home Page</button>
+
 </form>
 
+<br />
+
 <table class="table">
+
     <thead>
         <tr>
             <th>Name</th>
             <th>Bio</th>
         </tr>
     </thead>
+
     @foreach (var artist in Model)
     {
         <tr>

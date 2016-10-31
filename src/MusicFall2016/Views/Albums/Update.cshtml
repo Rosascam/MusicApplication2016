@@ -2,15 +2,21 @@
 @{
     ViewData["Title"] = "Update an Album:";
 }
-<h3>Update Album:</h3>
+<h1>Update Album</h1>
+
 <form asp-action="Update" method="post">
+
     <input type="hidden" asp-for="AlbumID" value="@Model.AlbumID" />
+
     Title <p><input type="text" asp-for="Title" value="@Model.Title" /></p>
     <span asp-validation-for="Title"></span>
+
     Artist <p><select asp-for="ArtistID" asp-items="ViewBag.ArtistList" id="ArtistID" name="ArtistID" value="@Model.Artist.Name"></select></p>
     <span asp-validation-for="ArtistID"></span>
+
     Genre <p><select asp-for="GenreID" asp-items="ViewBag.GenreList" id="GenreID" name="GenreID" value="@Model.Genre.Name"></select></p>
     <span asp-validation-for="GenreID"></span>
+
     Price <p><input type="text" asp-for="Price" value="@Model.Price" /></p>
     <span asp-validation-for="Price"></span>
 
@@ -18,6 +24,10 @@
     
 </form>
 
+<br />
+
 <form action="/Albums/Details" method="get">
+
     <button>Go back</button>
+
 </form>

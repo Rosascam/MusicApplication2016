@@ -2,9 +2,12 @@
 @{
     ViewData["Title"] = "Genre";
 }
-<h2>Genre List</h2>
+<h1>Genre List</h1>
+
 <h2>Albums in @ViewData["Genre"].ToString()</h2>
+
 <table class="table">
+
     <thead>
         <tr>
             <th>Albums</th>
@@ -21,9 +24,9 @@
                     @album.Title
                 </td>
             </tr>
-
         }
     }
+
 </table>
 
 

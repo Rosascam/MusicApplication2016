@@ -2,23 +2,27 @@
 @{
     ViewData["Title"] = "Create an Artists:";
 }
-<h3>Create Artist</h3>
+<h1>Create Artist</h1>
 
 <form asp-action="Create" method="post">
+
     <div>
         <div>Name <p><input type="text" asp-for="Name" value="" /></p></div>
-
         <span asp-validation-for="Name"></span>
 
         <div>Bio <p><input type="text" asp-for="Bio" value="" /></p></div>
-
         <span asp-validation-for="Bio"></span>
     </div>
 
-    <button type="button" class="btn btn-primary btn-block">Add artist</button>
+    <button>Add artist</button>
 
 </form>
+
+<br />
 
 <form action="Details" method="get">
+
     <button>Go back</button>
+
 </form>
+

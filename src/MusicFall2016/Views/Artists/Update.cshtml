@@ -2,12 +2,15 @@
 @{
     ViewData["Title"] = "Update an Artists:";
 }
-<h3>Update Artist</h3>
+<h1>Update Artist</h1>
 
 <form asp-action="Update" method="post">
+
     <input type="hidden" asp-for="ArtistID" value="@Model.ArtistID" />
+
     Name <p><input type="text" asp-for="Name" value="@Model.Name" /></p>
     <span asp-validation-for="Name"></span>
+
     Bio <p><input type="text" asp-for="Bio" value="@Model.Bio" /></p>
     <span asp-validation-for="Bio"></span>
 
@@ -15,6 +18,10 @@
 
 </form>
 
+<br />
+
 <form action="/Artists/Details" method="get">
+
     <button>Go back</button>
+
 </form>
