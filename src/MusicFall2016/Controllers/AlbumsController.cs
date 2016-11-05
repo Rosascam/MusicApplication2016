@@ -4,6 +4,7 @@ using MusicFall2016.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 
 namespace MusicFall2016.Controllers
 {
@@ -15,19 +16,62 @@ namespace MusicFall2016.Controllers
         {
             _context = context;
         }
-
-        public IActionResult Details()
+        
+        public async Task<IActionResult> Details(String searchString, string sortOrder)
         {
-            var albums = _context.Albums.Include(a => a.Artist).Include(a => a.Genre).ToList();
-            return View(albums);
-        }
+            ViewData["TitleSortParm"] = String.IsNullOrEmpty(sortOrder) ? "title_asc" : "title_dec";
+            ViewData["ArtistSortParm"] = String.IsNullOrEmpty(sortOrder) ? "artist_asc" : "artist_dec";
+            ViewData["GenreSortParm"] = String.IsNullOrEmpty(sortOrder) ? "genre_asc" : "genre_dec";
+            ViewData["PriceSortParm"] = String.IsNullOrEmpty(sortOrder) ? "price_asc" : "price_dec";
+            ViewData["LikeSortParm"] = String.IsNullOrEmpty(sortOrder) ? "like_asc" : "like_dec";
 
+            var album = from s in _context.Albums.Include(a=> a.Artist).Include(a=> a.Genre)
+                           select s;
+            switch (sortOrder)
+
+            {
+                case "title_asc":
+                    album = album.OrderBy(s => s.Title);
+                    break;
+                case "title_dec":
+                    album = album.OrderByDescending(s => s.Title);                    
+                    break;
+                case "artist_asc":
+                    album = album.OrderBy(s => s.Artist.Name);
+                    break;
+                case "artist_dec":
+                    album = album.OrderByDescending(s => s.Artist.Name);
+                    break;
+                case "genre_asc":
+                    album = album.OrderBy(s => s.Genre.Name);
+                    break;
+                case "genre_dec":
+                    album = album.OrderByDescending(s => s.Genre.Name);
+                    break;
+                case "price_asc":
+                    album = album.OrderBy(s => s.Price);
+                    break;
+                case "price_dec":
+                    album = album.OrderByDescending(s => s.Price);
+                    break;
+                case "like_asc":
+                    album = album.OrderBy(s => s.Like);
+                    break;
+                case "like_dec":
+                    album = album.OrderByDescending(s => s.Like);
+                    break;
+
+            }
+            return View(await album.AsNoTracking().ToListAsync());
+        }
+        
         public IActionResult Create()
         {
             ViewBag.ArtistList = new SelectList(_context.Artists, "ArtistID", "Name");
             ViewBag.GenreList = new SelectList(_context.Genres, "GenreID", "Name");
             return View();
         }
+
         [HttpPost]
         public IActionResult Create(Album album)
         {
@@ -74,20 +118,12 @@ namespace MusicFall2016.Controllers
                 return NotFound();
             }
             album.Like++;
-
-
-
+            
             _context.SaveChanges();
 
             return RedirectToAction("Details");
         }
-
-
-
-    
-
-
-public IActionResult Update(int? id)
+        public IActionResult Update(int? id)
         {
             {
                 if (id == null)

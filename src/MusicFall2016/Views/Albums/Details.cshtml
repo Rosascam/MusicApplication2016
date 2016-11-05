@@ -4,16 +4,25 @@
 }
 <h1><span class="glyphicon glyphicon-cd"></span> Albums</h1>
 
-
-
 <table class="table">
 
     <thead>
         <tr>
-            <th>Title</th>
-            <th>Artist</th>
-            <th>Genre</th>
-            <th>Price</th>
+            <th>
+                <a asp-action="Details" asp-route-sortOrder="@ViewBag.TitleSortParm">Title</a>
+            </th>
+
+            <th>
+                <a asp-action="Details" asp-route-sortOrder="@ViewBag.ArtistSortParm">Artist</a>
+            </th>
+
+            <th>
+                <a asp-action="Details" asp-route-sortOrder="@ViewBag.GenreSortParm">Genre</a>
+            </th>
+
+            <th>
+                <a asp-action="Details" asp-route-sortOrder="@ViewBag.PriceSortParm">Price</a>
+            </th>
         </tr>
     </thead>
 
@@ -27,11 +36,11 @@
             <td>@album.Like</td>
 
             <td>
-                <a asp-action="Update" asp-route-id="@album.AlbumID">Edit</a>
-                <a asp-action="Retrieve" asp-route-id="@album.AlbumID">Details</a>
-                <a asp-action="Delete" asp-route-id="@album.AlbumID">Delete</a>
                 <a asp-action="Like" asp-route-id="@album.AlbumID">Like</a>
-                
+                <a asp-action="Retrieve" asp-route-id="@album.AlbumID">Details</a>
+                <a asp-action="Update" asp-route-id="@album.AlbumID">Edit</a>                
+                <a asp-action="Delete" asp-route-id="@album.AlbumID">Delete</a>
+                                
             </td>
 
         </tr>
