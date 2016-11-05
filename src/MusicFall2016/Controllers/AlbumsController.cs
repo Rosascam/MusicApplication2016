@@ -24,7 +24,7 @@ namespace MusicFall2016.Controllers
             ViewData["GenreSortParm"] = String.IsNullOrEmpty(sortOrder) ? "genre_asc" : "genre_dec";
             ViewData["PriceSortParm"] = String.IsNullOrEmpty(sortOrder) ? "price_asc" : "price_dec";
             ViewData["LikeSortParm"] = String.IsNullOrEmpty(sortOrder) ? "like_asc" : "like_dec";
-
+            
             var album = from s in _context.Albums.Include(a => a.Artist).Include(a => a.Genre)
                         select s;
             switch (sortOrder)
@@ -60,31 +60,28 @@ namespace MusicFall2016.Controllers
                 case "like_dec":
                     album = album.OrderByDescending(s => s.Like);
                     break;
-
             }
+
             if (searchString != null)
             {
                 var albumSearch = from s in _context.Albums.Include(a => a.Artist).Include(a => a.Genre)
                                   select s;
+           
+            if (!String.IsNullOrEmpty(searchString))
+             {
+                albumSearch = albumSearch.Where(s => s.Title.Contains(searchString) || s.Artist.Name.Contains(searchString) || s.Genre.Name.Contains(searchString) || s.Price.ToString().Contains(searchString));
+             }
 
+               return View(albumSearch.ToList());
+            }
 
+            else
+            {
+                var albums = _context.Albums.Include(a => a.Artist).Include(a => a.Genre).ToList();                
+            }
 
-
-
-    //            if (!String.IsNullOrEmpty(searchString))
-
-    //                albumSearch = albumSearch.Where(s => s.Title.Contains(searchString) || s.Artist.Name.Contains(searchString) || s.Genre.Name.Contains(searchString) || s.Price.ToString().Contains(searchString));
-    //        }
-    //        return View(albumSearch.ToList());
-    //    }
-
-    //        else {
-    //     var albums = _context.Albums.Include(a => a.Artist).Include(a => a.Genre).ToList();
-    //}
-
-    //        return View(await album.AsNoTracking().ToListAsync());
-    //    }
-        
+            return View(await album.AsNoTracking().ToListAsync());
+        }
 
         public IActionResult Create()
         {

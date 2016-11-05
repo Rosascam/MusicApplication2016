@@ -15,7 +15,7 @@ namespace MusicFall2016.Controllers
         {
             _context = context;
         }
-        // GET: /<controller>/
+     
         public IActionResult Details()
         {
             var artist = _context.Artists.ToList();

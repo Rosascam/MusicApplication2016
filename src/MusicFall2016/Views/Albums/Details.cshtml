@@ -4,6 +4,15 @@
 }
 <h1><span class="glyphicon glyphicon-cd"></span> Albums</h1>
 
+<form asp-action="Details" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search Album: <input type="text" name="searchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-info" />
+        </p>
+    </div>
+</form>
+
 <table class="table">
 
     <thead>
@@ -22,6 +31,10 @@
 
             <th>
                 <a asp-action="Details" asp-route-sortOrder="@ViewBag.PriceSortParm">Price</a>
+            </th>
+
+            <th>
+                <a asp-action="Details" asp-route-sortOrder="@ViewBag.LikeSortParm">Like</a>
             </th>
         </tr>
     </thead>
