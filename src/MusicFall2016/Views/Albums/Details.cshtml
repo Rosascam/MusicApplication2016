@@ -24,12 +24,15 @@
             <td>@album.Artist.Name</td>
             <td>@album.Genre.Name</td>
             <td>@album.Price</td>
+            <td>@album.Like</td>
 
             <td>
                 <a asp-action="Update" asp-route-id="@album.AlbumID">Edit</a>
                 <a asp-action="Retrieve" asp-route-id="@album.AlbumID">Details</a>
                 <a asp-action="Delete" asp-route-id="@album.AlbumID">Delete</a>
+                <a asp-action="Like" asp-route-id="@album.AlbumID">Like</a>
             </td>
+
         </tr>
         
     }

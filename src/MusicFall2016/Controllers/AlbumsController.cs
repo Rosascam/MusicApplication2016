@@ -60,7 +60,34 @@ namespace MusicFall2016.Controllers
             return View(album);
         }
 
-        public IActionResult Update(int? id)
+        public IActionResult Like(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+    }
+
+    var album = _context.Albums.Include(a => a.Artist).Include(a => a.Genre).SingleOrDefault(a => a.AlbumID == id);
+
+            if (album == null)
+            {
+                return NotFound();
+            }
+            album.Like++;
+
+
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Details");
+        }
+
+
+
+    
+
+
+public IActionResult Update(int? id)
         {
             {
                 if (id == null)
