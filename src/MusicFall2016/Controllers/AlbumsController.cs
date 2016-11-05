@@ -16,7 +16,7 @@ namespace MusicFall2016.Controllers
         {
             _context = context;
         }
-        
+
         public async Task<IActionResult> Details(String searchString, string sortOrder)
         {
             ViewData["TitleSortParm"] = String.IsNullOrEmpty(sortOrder) ? "title_asc" : "title_dec";
@@ -25,8 +25,8 @@ namespace MusicFall2016.Controllers
             ViewData["PriceSortParm"] = String.IsNullOrEmpty(sortOrder) ? "price_asc" : "price_dec";
             ViewData["LikeSortParm"] = String.IsNullOrEmpty(sortOrder) ? "like_asc" : "like_dec";
 
-            var album = from s in _context.Albums.Include(a=> a.Artist).Include(a=> a.Genre)
-                           select s;
+            var album = from s in _context.Albums.Include(a => a.Artist).Include(a => a.Genre)
+                        select s;
             switch (sortOrder)
 
             {
@@ -34,7 +34,7 @@ namespace MusicFall2016.Controllers
                     album = album.OrderBy(s => s.Title);
                     break;
                 case "title_dec":
-                    album = album.OrderByDescending(s => s.Title);                    
+                    album = album.OrderByDescending(s => s.Title);
                     break;
                 case "artist_asc":
                     album = album.OrderBy(s => s.Artist.Name);
@@ -62,9 +62,30 @@ namespace MusicFall2016.Controllers
                     break;
 
             }
-            return View(await album.AsNoTracking().ToListAsync());
-        }
+            if (searchString != null)
+            {
+                var albumSearch = from s in _context.Albums.Include(a => a.Artist).Include(a => a.Genre)
+                                  select s;
+
+
+
+
+
+    //            if (!String.IsNullOrEmpty(searchString))
+
+    //                albumSearch = albumSearch.Where(s => s.Title.Contains(searchString) || s.Artist.Name.Contains(searchString) || s.Genre.Name.Contains(searchString) || s.Price.ToString().Contains(searchString));
+    //        }
+    //        return View(albumSearch.ToList());
+    //    }
+
+    //        else {
+    //     var albums = _context.Albums.Include(a => a.Artist).Include(a => a.Genre).ToList();
+    //}
+
+    //        return View(await album.AsNoTracking().ToListAsync());
+    //    }
         
+
         public IActionResult Create()
         {
             ViewBag.ArtistList = new SelectList(_context.Artists, "ArtistID", "Name");
