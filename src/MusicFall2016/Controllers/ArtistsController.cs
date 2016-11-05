@@ -29,11 +29,11 @@ namespace MusicFall2016.Controllers
         [HttpPost]
         public IActionResult Create(Artist art)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && !_context.Artists.Any(a => a.Name == art.Name))
             {
                 _context.Artists.Add(art);
                 _context.SaveChanges();
-                return RedirectToAction("Details");
+                return RedirectToAction("Details"); 
             }
             return View();
         }
