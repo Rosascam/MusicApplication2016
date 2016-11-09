@@ -91,10 +91,53 @@ namespace MusicFall2016.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Album album)
+        public IActionResult Create(Album album, String addNewArtist, String AddNewGenre)
         {
             if (ModelState.IsValid)
             {
+                if(addNewArtist != null)
+                {
+                    foreach(var artist in _context.Artists.ToList())
+                    {
+                        String name = artist.Name;
+                        if (name == addNewArtist)
+                        {
+                            addNewArtist = "";
+                        }
+                    }
+
+                    if (addNewArtist != "")
+                    {
+                        Artist artist = new Artist();
+                        artist.Name = addNewArtist;
+                        artist.Bio = "";
+                        _context.Artists.Add(artist);
+                        _context.SaveChanges();
+                        album.Artist = _context.Artists.Last();
+                    }
+                }
+
+                if (AddNewGenre != null)
+                {
+                    foreach(var genres in _context.Genres.ToList())
+                    {
+                        String name = genres.Name;
+                        if (name == AddNewGenre)
+                        {
+                            AddNewGenre = "";
+                        }
+                    }
+
+                    if(AddNewGenre != "")
+                    {
+                        Genre genre = new Genre();
+                        genre.Name = AddNewGenre;
+                        _context.Genres.Add(genre);
+                        _context.SaveChanges();
+                        album.Genre = _context.Genres.Last();
+                    }
+                }
+
                 _context.Albums.Add(album);
                 _context.SaveChanges();
                 return RedirectToAction("Details");
