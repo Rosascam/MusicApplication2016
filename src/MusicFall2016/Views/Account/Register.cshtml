@@ -1,0 +1,22 @@
+﻿@model MusicFall2016.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Account Registration";
+}
+<h3>
+    Register New Account
+</h3>
+
+
+<form asp-action="Register" method="post">
+    Email <p><input type="text" asp-for="Email" /></p>
+    <span asp-validation-for="Email"></span>
+
+    Password <p><input type="password" asp-for="Password" /></p>
+    <span asp-validation-for="Password"></span>
+
+    Confirm Password <p><input type="password" asp-for="confirmPassword" /></p>
+    <span asp-validation-for="confirmPassword"></span>
+
+    <button class="button" id="Register">Register Your Account</button>
+</form>
