@@ -10,12 +10,12 @@ namespace MusicFall2016.Models
         [Required(ErrorMessage = "Password is required")]
         [DataType(DataType.Password)]
 
-        public string password { get; set; }
+        public string Password { get; set; }
 
         [Compare("Password", ErrorMessage = "Please comfirm your password.")]
 
         [DataType(DataType.Password)]
 
-        public string confirmPassword { get; set; }
+        public string ConfirmPassword { get; set; }
     }
 }
