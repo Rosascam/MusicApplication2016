@@ -46,5 +46,58 @@ namespace MusicFall2016.Controllers
             return View(model);
 
         }
+
+
+        public IActionResult Login()
+        {
+            return View();
+
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+                if (result.Succeeded)
+                {
+                    if (String.IsNullOrEmpty(returnUrl))
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                        return Redirect(returnUrl);
+                }
+
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login");
+                    return View(model);
+                }
+            }
+            return View(model);
+        }
+
+        private IActionResult RedirectToLocal(string returnUrl)
+        {
+            throw new NotImplementedException();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> LogOff()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }
+
+    
+
+
