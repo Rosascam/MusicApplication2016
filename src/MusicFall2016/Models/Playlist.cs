@@ -11,6 +11,7 @@ namespace MusicFall2016.Models
         public int PlaylistID { get; set; }
 
         public ApplicationUser Owner { get; set; }
+
         public string name { get; set; }
         public List<PlaylistAlbums> Albums { get; set; }
     }
