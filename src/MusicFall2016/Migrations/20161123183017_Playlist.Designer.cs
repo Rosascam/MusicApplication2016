@@ -8,9 +8,10 @@ using MusicFall2016.Models;
 namespace MusicFall2016.Migrations
 {
     [DbContext(typeof(MusicDbContext))]
-    partial class MusicDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161123183017_Playlist")]
+    partial class Playlist
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -247,13 +248,9 @@ namespace MusicFall2016.Migrations
                     b.Property<int>("PlaylistID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("OwnerId");
-
                     b.Property<string>("name");
 
                     b.HasKey("PlaylistID");
-
-                    b.HasIndex("OwnerId");
 
                     b.ToTable("Playlist");
                 });
@@ -319,13 +316,6 @@ namespace MusicFall2016.Migrations
                         .WithMany("Albums")
                         .HasForeignKey("PlaylistID")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("MusicFall2016.Models.Playlist", b =>
-                {
-                    b.HasOne("MusicFall2016.Models.ApplicationUser", "Owner")
-                        .WithMany()
-                        .HasForeignKey("OwnerId");
                 });
         }
     }

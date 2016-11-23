@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using static MusicFall2016.Models.MusicDbContext;
 
 namespace MusicFall2016.Models
 {
@@ -26,6 +27,8 @@ namespace MusicFall2016.Models
         public Genre Genre { get; set; }
 
         public int Like { get; set; }
+
+        public List<PlaylistAlbums> Playlists { get; set; }
 
 
     }
