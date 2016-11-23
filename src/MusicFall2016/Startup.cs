@@ -43,8 +43,13 @@ namespace MusicFall2016
        .AddEntityFrameworkStores<MusicDbContext>()
        .AddDefaultTokenProviders();
 
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<MusicDbContext>()
+                .AddDefaultTokenProviders();
+
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
+
 
             services.AddDbContext<MusicDbContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -89,6 +94,7 @@ namespace MusicFall2016
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
+            app.UseIdentity();
 
             app.UseMvc(routes =>
             {
