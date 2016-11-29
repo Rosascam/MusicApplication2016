@@ -3,9 +3,9 @@
 @{
     ViewData["Title"] = "Account Registration";
 }
-<h3>
-    Register New Account
-</h3>
+<h3>Register New Account</h3>
+<h5>Have an account? Click <a href="/Account/Login">here</a> to log in!</h5>
+
 
 
 <form asp-action="Register" method="post">
@@ -18,5 +18,5 @@
     Confirm Password <p><input type="password" asp-for="ConfirmPassword" /></p>
     <span asp-validation-for="ConfirmPassword"></span>
 
-    <button class="button" id="Register">Register Your Account</button>
+    <button class="button btn btn-info" id="Register">Register Your Account</button>
 </form>
