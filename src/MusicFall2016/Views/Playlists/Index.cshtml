@@ -1,5 +1,21 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<MusicFall2016.Models.Playlist>
 @{
+    ViewData["Title"] = "Playlists";
 }
+
+<h2>Welcome @User.Identity.Name! Create a playlist: </h2>
+
+<a class="btn btn-sm btn-info" asp-action="Create">Create Playlist</a>
+
+<table class="table">
+    @foreach (var playlist in Model)
+    {
+        <tr>
+            <td>@playlist.name</td>
+            <td>
+                <a class="btn btn-sm btn-default" asp-action="Update" asp-route-id="@playlist.PlaylistID">Rename</a>
+                <a class="btn btn-sm btn-default" asp-action="Delete" asp-route-id="@playlist.PlaylistID">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
