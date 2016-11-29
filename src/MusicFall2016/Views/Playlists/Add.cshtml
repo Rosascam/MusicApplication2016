@@ -1,5 +1,21 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model MusicFall2016.Models.Album
+
 @{
+    ViewData["Title"] = "Select playlist:";
 }
+@*<h2>Select playlist for @Model.Title</h2><br />*@
+
+<form asp-action="Add" method="post">
+
+    <input type="hidden" asp-for="AlbumID" />
+
+    <select asp-items="ViewBag.Playlist" name="PlayListID"></select>
+
+    <input type="submit" value="Add playlist">
+</form>
+
+<form action="/Playlists/Index">
+
+    <button class="btn btn-info">Go back</button>
+
+</form>

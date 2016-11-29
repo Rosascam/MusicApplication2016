@@ -18,9 +18,10 @@
     <span asp-validation-for="GenreID"></span>
 
     Price <p><input type="text" asp-for="Price" value="@Model.Price" /></p>
-    <span asp-validation-for="Price"></span>
+    <span asp-validation-for="Price"></span>    
 
-    <button >Update album</button>
+    <br />
+    <button class="btn btn-info" >Update album</button>
     
 </form>
 
@@ -28,6 +29,6 @@
 
 <form action="/Albums/Details" method="get">
 
-    <button>Go back</button>
+    <button class="btn btn-info">Go back</button>
 
 </form>

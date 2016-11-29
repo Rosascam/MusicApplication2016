@@ -1,5 +1,15 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model MusicFall2016.Models.Playlist
 @{
+    ViewData["Title"] = "Update a Playlist:";
 }
+<h2>Update a Playlist:</h2>
+
+<form asp-action="Update" method="post">
+    <input type="hidden" asp-for="PlaylistID" />
+    <input type="text" asp-for="name" />
+    <input type="submit" asp-action="Update" class="btn btn-sm btn-default" value="Submit">
+</form>
+
+<form action="/Playlists/Index" method="get">
+    <button class="btn btn-sm btn-default">Go back</button>
+</form>
