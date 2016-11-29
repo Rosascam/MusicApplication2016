@@ -4,15 +4,22 @@
     ViewData["Title"] = "Select playlist:";
 }
 @*<h2>Select playlist for @Model.Title</h2><br />*@
-
+<br />
 <form asp-action="Add" method="post">
 
-    <input type="hidden" asp-for="AlbumID" />
+  
+        <input type="hidden" asp-for="AlbumID" />
 
-    <select asp-items="ViewBag.Playlist" name="PlayListID"></select>
+    <div><p>Select the playlist you wish to add the song to:</p>
+        <select asp-items="ViewBag.Playlist" name="PlayListID"></select>
+    </div>
 
-    <input type="submit" value="Add playlist">
+    <br />
+
+    <button class="btn btn-info" type="submit" >Add to Playlist</button>
 </form>
+
+<br/>
 
 <form action="/Playlists/Index">
 
